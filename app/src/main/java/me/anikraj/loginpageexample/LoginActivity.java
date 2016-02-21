@@ -3,6 +3,7 @@ package me.anikraj.loginpageexample;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -52,7 +53,10 @@ public class LoginActivity extends AppCompatActivity  {
 
     public void signin(View v){
         if(userid.compareTo(email.getText().toString())==0 && pas.compareTo(pass.getText().toString())==0)
+        {
             Toast.makeText(this,"Welcome "+userid,Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this,MainActivity.class).putExtra("name",userid));
+        }
         else
             Toast.makeText(this,"Wrong pass/userid. Try again.",Toast.LENGTH_SHORT).show();
     }
